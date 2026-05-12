@@ -1,0 +1,1517 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ENLINEA MADERA Y METAL — Pérgolas de diseño</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --warm-white: #FAF7F2;
+    --rust: #C4622D;
+    --rust-light: #D4764A;
+    --charcoal: #1C1C1C;
+    --dark: #111111;
+    --wood: #A0714F;
+    --sage: #4A5C47;
+    --sand: #D9C9B0;
+    --sand-light: #EDE4D6;
+    --text-muted: #7A7065;
+    --border: rgba(0,0,0,0.08);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--warm-white);
+    color: var(--charcoal);
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─────────────────────────────────────── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 4vw;
+    height: 70px;
+    background: rgba(250,247,242,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    transition: all 0.3s;
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 12px;
+    text-decoration: none;
+  }
+  .nav-logo-icon {
+    width: 36px; height: 36px;
+    background: var(--rust);
+    display: flex; align-items: center; justify-content: center;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  }
+  .nav-logo-icon svg { width: 18px; fill: white; }
+  .nav-brand { display: flex; flex-direction: column; }
+  .nav-brand-main {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700; font-size: 14px; letter-spacing: 0.12em;
+    color: var(--charcoal); line-height: 1;
+  }
+  .nav-brand-sub {
+    font-size: 9px; letter-spacing: 0.2em; color: var(--text-muted);
+    text-transform: uppercase; margin-top: 2px;
+  }
+  .nav-links {
+    display: flex; align-items: center; gap: 36px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 12px; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--charcoal);
+    text-decoration: none; transition: color 0.2s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -3px; left: 0; width: 0; height: 1px;
+    background: var(--rust); transition: width 0.3s;
+  }
+  .nav-links a:hover { color: var(--rust); }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-cta {
+    background: var(--rust); color: white !important;
+    padding: 10px 22px; letter-spacing: 0.08em !important;
+    transition: background 0.2s !important;
+  }
+  .nav-cta::after { display: none !important; }
+  .nav-cta:hover { background: var(--rust-light) !important; color: white !important; }
+  .nav-hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+  .nav-hamburger span { display: block; width: 24px; height: 2px; background: var(--charcoal); transition: all 0.3s; }
+  .mobile-menu { display: none; }
+
+  /* ─── HERO ───────────────────────────────────────*/
+  #inicio {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    padding-top: 70px;
+    position: relative; overflow: hidden;
+  }
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 4vw 80px 6vw;
+    position: relative; z-index: 2;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--rust); margin-bottom: 28px;
+  }
+  .hero-tag::before {
+    content: ''; display: block; width: 24px; height: 1px; background: var(--rust);
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 5.5vw, 80px);
+    font-weight: 300; line-height: 1.05;
+    color: var(--dark); margin-bottom: 24px;
+  }
+  .hero-title em { font-style: italic; color: var(--rust); }
+  .hero-desc {
+    font-size: 15px; line-height: 1.7; color: var(--text-muted);
+    max-width: 420px; margin-bottom: 40px;
+  }
+  .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--charcoal); color: white;
+    padding: 14px 32px; font-size: 12px; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    border: none; cursor: pointer; text-decoration: none;
+    transition: all 0.25s; display: inline-flex; align-items: center; gap: 10px;
+  }
+  .btn-primary:hover { background: var(--rust); }
+  .btn-secondary {
+    color: var(--charcoal); font-size: 12px; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    text-decoration: none; border-bottom: 1px solid var(--charcoal);
+    padding-bottom: 2px; transition: all 0.2s;
+  }
+  .btn-secondary:hover { color: var(--rust); border-color: var(--rust); }
+  .hero-stats {
+    display: flex; gap: 40px; margin-top: 56px;
+    padding-top: 40px; border-top: 1px solid var(--border);
+  }
+  .stat-item { display: flex; flex-direction: column; }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px; font-weight: 500; line-height: 1;
+    color: var(--charcoal);
+  }
+  .stat-label { font-size: 11px; letter-spacing: 0.1em; color: var(--text-muted); margin-top: 4px; }
+
+  .hero-right {
+    position: relative; overflow: hidden;
+    background: var(--sand-light);
+  }
+  .hero-img-main {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 8s ease;
+  }
+  .hero-right:hover .hero-img-main { transform: scale(1.03); }
+  .hero-img-overlay {
+    position: absolute; bottom: 40px; left: -30px;
+    width: 200px; height: 200px; object-fit: cover;
+    border: 6px solid var(--warm-white);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+  }
+  .hero-badge {
+    position: absolute; top: 40px; right: 40px;
+    background: var(--rust); color: white;
+    padding: 20px; text-align: center;
+    width: 110px; height: 110px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  }
+  .hero-badge-num { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 500; line-height: 1; }
+  .hero-badge-txt { font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 2px; }
+
+  /* ─── SECTION HEADINGS ───────────────────────── */
+  .section-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--rust); margin-bottom: 16px;
+  }
+  .section-tag::before {
+    content: ''; display: block; width: 24px; height: 1px; background: var(--rust);
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 58px); font-weight: 300; line-height: 1.1;
+    color: var(--dark);
+  }
+  .section-title em { font-style: italic; color: var(--rust); }
+  .section-desc {
+    font-size: 15px; line-height: 1.7; color: var(--text-muted);
+    max-width: 500px; margin-top: 16px;
+  }
+
+  /* ─── SOLUCIONES ─────────────────────────────── */
+  #soluciones {
+    padding: 120px 6vw;
+    background: var(--warm-white);
+  }
+  .soluciones-header {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 60px; align-items: end; margin-bottom: 80px;
+  }
+  .tab-row {
+    display: flex; gap: 0; border-bottom: 1px solid var(--border);
+    margin-bottom: 48px;
+  }
+  .tab-btn {
+    padding: 12px 28px; font-size: 12px; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    background: none; border: none; cursor: pointer;
+    color: var(--text-muted); border-bottom: 2px solid transparent;
+    margin-bottom: -1px; transition: all 0.2s;
+  }
+  .tab-btn.active { color: var(--rust); border-bottom-color: var(--rust); }
+  .tab-btn:hover { color: var(--charcoal); }
+  .tab-content { display: none; }
+  .tab-content.active { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; animation: fadeIn 0.4s; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+  .sol-text h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px; font-weight: 400; margin-bottom: 16px;
+    color: var(--dark);
+  }
+  .sol-text p { font-size: 14px; line-height: 1.8; color: var(--text-muted); margin-bottom: 24px; }
+  .sol-features { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .sol-features li {
+    display: flex; align-items: flex-start; gap: 12px;
+    font-size: 13px; color: var(--charcoal); line-height: 1.5;
+  }
+  .sol-features li::before {
+    content: '✓'; color: var(--rust); font-weight: 700;
+    flex-shrink: 0; margin-top: 1px;
+  }
+  .sol-img { position: relative; }
+  .sol-img img {
+    width: 100%; height: 380px; object-fit: cover;
+  }
+  .sol-img-badge {
+    position: absolute; bottom: 24px; right: 24px;
+    background: white; padding: 16px 20px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+  }
+  .sol-img-badge span { display: block; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); }
+  .sol-img-badge strong { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--dark); }
+
+  /* Cubiertas strip */
+  .cubiertas-strip {
+    background: var(--dark); padding: 80px 6vw;
+    display: grid; grid-template-columns: 1fr 2fr; gap: 80px; align-items: center;
+  }
+  .cubiertas-strip .section-title { color: white; }
+  .cubiertas-strip .section-tag { color: var(--rust-light); }
+  .cubiertas-strip .section-tag::before { background: var(--rust-light); }
+  .cubiertas-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .cubierta-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 32px; transition: background 0.3s;
+  }
+  .cubierta-card:hover { background: rgba(255,255,255,0.09); }
+  .cubierta-icon { font-size: 28px; margin-bottom: 16px; }
+  .cubierta-card h4 { font-size: 16px; font-weight: 600; color: white; margin-bottom: 8px; }
+  .cubierta-card p { font-size: 13px; line-height: 1.6; color: rgba(255,255,255,0.55); }
+
+  /* ─── PORTAFOLIO ─────────────────────────────── */
+  #portafolio {
+    padding: 120px 6vw;
+    background: var(--cream);
+  }
+  .portafolio-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 56px; flex-wrap: wrap; gap: 24px;
+  }
+  .filter-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .filter-btn {
+    padding: 8px 20px; font-size: 11px; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    border: 1px solid var(--border); background: white;
+    cursor: pointer; transition: all 0.2s; color: var(--text-muted);
+  }
+  .filter-btn.active { background: var(--rust); color: white; border-color: var(--rust); }
+  .filter-btn:hover:not(.active) { border-color: var(--charcoal); color: var(--charcoal); }
+  .grid-portafolio {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+  }
+  .portfolio-item {
+    position: relative; overflow: hidden;
+    cursor: pointer;
+  }
+  .portfolio-item.featured {
+    grid-column: span 2; grid-row: span 2;
+  }
+  .portfolio-item img {
+    width: 100%; height: 320px; object-fit: cover;
+    transition: transform 0.6s ease;
+    display: block;
+  }
+  .portfolio-item.featured img { height: 643px; }
+  .portfolio-item:hover img { transform: scale(1.05); }
+  .portfolio-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 60%);
+    opacity: 0; transition: opacity 0.3s;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 28px;
+  }
+  .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+  .portfolio-overlay h4 { font-size: 16px; font-weight: 500; color: white; margin-bottom: 4px; }
+  .portfolio-overlay span { font-size: 12px; color: rgba(255,255,255,0.7); letter-spacing: 0.05em; }
+  .portfolio-tag {
+    position: absolute; top: 16px; left: 16px;
+    background: var(--rust); color: white;
+    font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 4px 12px;
+  }
+
+  /* ─── PROCESO ────────────────────────────────── */
+  .proceso-section {
+    padding: 100px 6vw;
+    background: white;
+  }
+  .proceso-header { text-align: center; margin-bottom: 72px; }
+  .proceso-header .section-tag { justify-content: center; }
+  .proceso-header .section-tag::before { display: none; }
+  .proceso-steps {
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    gap: 0; position: relative;
+  }
+  .proceso-steps::before {
+    content: ''; position: absolute;
+    top: 36px; left: 10%; right: 10%;
+    height: 1px; background: var(--border);
+  }
+  .proceso-step {
+    display: flex; flex-direction: column; align-items: center;
+    text-align: center; padding: 0 16px; position: relative; z-index: 1;
+  }
+  .proceso-num {
+    width: 72px; height: 72px;
+    background: var(--warm-white); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif; font-size: 28px;
+    color: var(--text-muted); margin-bottom: 20px;
+    transition: all 0.3s;
+  }
+  .proceso-step:hover .proceso-num {
+    background: var(--rust); color: white; border-color: var(--rust);
+  }
+  .proceso-step h4 { font-size: 13px; font-weight: 600; margin-bottom: 8px; letter-spacing: 0.03em; }
+  .proceso-step p { font-size: 12px; color: var(--text-muted); line-height: 1.6; }
+
+  /* ─── COTIZADOR ──────────────────────────────── */
+  #cotizador {
+    padding: 120px 6vw;
+    background: var(--cream);
+  }
+  .cotizador-wrap {
+    display: grid; grid-template-columns: 1fr 380px;
+    gap: 80px; align-items: start;
+  }
+  .cotizador-left {}
+  .cotizador-steps-nav {
+    display: flex; gap: 0; margin-bottom: 48px;
+    border-bottom: 1px solid var(--border);
+  }
+  .cstep {
+    flex: 1; padding: 16px; text-align: center;
+    cursor: pointer; border-bottom: 2px solid transparent;
+    margin-bottom: -1px; transition: all 0.2s;
+  }
+  .cstep-num {
+    width: 28px; height: 28px; background: var(--sand-light);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 600; margin: 0 auto 6px;
+    transition: all 0.2s;
+  }
+  .cstep.active .cstep-num { background: var(--rust); color: white; }
+  .cstep.active { border-bottom-color: var(--rust); }
+  .cstep-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); }
+  .cstep.active .cstep-label { color: var(--charcoal); }
+  .cotiz-panel { display: none; }
+  .cotiz-panel.active { display: block; animation: fadeIn 0.3s; }
+  .cotiz-panel h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; margin-bottom: 8px;
+  }
+  .cotiz-panel p { font-size: 13px; color: var(--text-muted); margin-bottom: 32px; }
+  .option-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .option-card {
+    border: 2px solid var(--border); padding: 20px;
+    cursor: pointer; transition: all 0.2s; text-align: center;
+    background: white;
+  }
+  .option-card:hover { border-color: var(--rust); }
+  .option-card.selected { border-color: var(--rust); background: rgba(196,98,45,0.04); }
+  .option-card .oc-icon { font-size: 32px; margin-bottom: 12px; display: block; }
+  .option-card h4 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .option-card p { font-size: 11px; color: var(--text-muted); margin-bottom: 0; }
+  .color-options { display: flex; gap: 16px; flex-wrap: wrap; }
+  .color-opt {
+    width: 60px; height: 60px; cursor: pointer;
+    border: 3px solid transparent; position: relative;
+    transition: border-color 0.2s;
+  }
+  .color-opt.selected { border-color: var(--rust); }
+  .color-opt span {
+    position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%);
+    font-size: 10px; white-space: nowrap; color: var(--text-muted);
+  }
+  .dim-row { display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 24px; }
+  .dim-field { flex: 1; min-width: 140px; }
+  .dim-field label { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 8px; }
+  .dim-field input {
+    width: 100%; padding: 12px 16px; border: 1px solid var(--border);
+    background: white; font-size: 15px; font-family: 'Outfit', sans-serif;
+    outline: none; transition: border-color 0.2s;
+  }
+  .dim-field input:focus { border-color: var(--rust); }
+  .cotiz-nav { display: flex; gap: 12px; margin-top: 32px; }
+  .btn-next, .btn-prev {
+    padding: 13px 28px; font-size: 12px; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    border: none; cursor: pointer; transition: all 0.2s;
+  }
+  .btn-next { background: var(--rust); color: white; }
+  .btn-next:hover { background: var(--charcoal); }
+  .btn-prev { background: var(--sand-light); color: var(--charcoal); }
+  .btn-prev:hover { background: var(--sand); }
+
+  /* Resumen */
+  .resumen-card {
+    background: var(--charcoal); color: white;
+    padding: 36px; position: sticky; top: 90px;
+  }
+  .resumen-card h3 {
+    font-size: 13px; text-transform: uppercase; letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.6); margin-bottom: 24px;
+    padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .resumen-row {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px; gap: 16px;
+  }
+  .resumen-row span:first-child { font-size: 12px; color: rgba(255,255,255,0.55); }
+  .resumen-row span:last-child { font-size: 13px; color: white; text-align: right; font-weight: 500; }
+  .resumen-price {
+    margin-top: 24px; padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .resumen-price .label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+  .resumen-price .price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 44px; font-weight: 400; color: white; line-height: 1.1;
+    margin-top: 4px;
+  }
+  .resumen-price .note { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+  .btn-cotizar {
+    display: block; width: 100%; margin-top: 24px;
+    background: var(--rust); color: white; border: none;
+    padding: 16px; font-size: 12px; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    cursor: pointer; text-decoration: none; text-align: center;
+    transition: background 0.2s;
+  }
+  .btn-cotizar:hover { background: var(--rust-light); }
+  .btn-guardar {
+    display: block; width: 100%; margin-top: 10px;
+    background: transparent; color: rgba(255,255,255,0.7);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 14px; font-size: 12px; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    cursor: pointer; transition: all 0.2s;
+  }
+  .btn-guardar:hover { border-color: rgba(255,255,255,0.5); color: white; }
+
+  /* ─── NOSOTROS ───────────────────────────────── */
+  #nosotros {
+    display: grid; grid-template-columns: 1fr 1fr;
+    min-height: 80vh;
+  }
+  .nosotros-img {
+    position: relative; overflow: hidden;
+    background: var(--sand-light);
+  }
+  .nosotros-img img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+  .nosotros-content {
+    padding: 100px 7vw; background: var(--dark); display: flex;
+    flex-direction: column; justify-content: center;
+  }
+  .nosotros-content .section-tag { color: var(--rust-light); }
+  .nosotros-content .section-tag::before { background: var(--rust-light); }
+  .nosotros-content .section-title { color: white; margin-bottom: 24px; }
+  .nosotros-content p { font-size: 14px; line-height: 1.8; color: rgba(255,255,255,0.65); margin-bottom: 16px; }
+  .valores-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; }
+  .valor-item {
+    border-left: 2px solid var(--rust);
+    padding-left: 16px;
+  }
+  .valor-item h4 { font-size: 14px; font-weight: 600; color: white; margin-bottom: 4px; }
+  .valor-item p { font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 0; }
+  .garantias-row {
+    display: flex; gap: 32px; margin-top: 40px;
+    padding-top: 36px; border-top: 1px solid rgba(255,255,255,0.1);
+    flex-wrap: wrap;
+  }
+  .garantia { display: flex; align-items: center; gap: 12px; }
+  .garantia-icon { font-size: 24px; flex-shrink: 0; }
+  .garantia-text { font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.4; }
+  .garantia-text strong { display: block; color: white; margin-bottom: 2px; }
+
+  /* ─── TESTIMONIAL ────────────────────────────── */
+  .testimonial-section {
+    padding: 100px 6vw;
+    background: var(--cream);
+    text-align: center;
+  }
+  .testimonial-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 3vw, 36px);
+    font-weight: 300; line-height: 1.5;
+    color: var(--dark); max-width: 750px; margin: 0 auto 28px;
+    font-style: italic;
+  }
+  .testimonial-author { font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); }
+  .testimonial-author strong { color: var(--rust); margin-right: 8px; }
+
+  /* ─── CONTACTO ───────────────────────────────── */
+  #contacto {
+    padding: 120px 6vw;
+    background: var(--warm-white);
+  }
+  .contacto-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: start;
+  }
+  .contact-form-wrap {}
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+  .form-group label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); }
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    padding: 13px 16px; border: 1px solid var(--border);
+    background: white; font-size: 14px; font-family: 'Outfit', sans-serif;
+    outline: none; transition: border-color 0.2s; resize: vertical;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus { border-color: var(--rust); }
+  .form-check { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 24px; }
+  .form-check input { width: 16px; height: 16px; margin-top: 2px; accent-color: var(--rust); flex-shrink: 0; }
+  .form-check label { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+  .contact-info-card {
+    background: var(--dark); color: white; padding: 48px;
+  }
+  .contact-info-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px; font-weight: 300; margin-bottom: 12px;
+  }
+  .contact-info-card > p { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 40px; }
+  .info-item {
+    display: flex; align-items: flex-start; gap: 16px;
+    margin-bottom: 28px; padding-bottom: 28px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .info-item:last-of-type { border-bottom: none; }
+  .info-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+  .info-text .info-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: rgba(255,255,255,0.4); margin-bottom: 4px; }
+  .info-text .info-val { font-size: 14px; color: white; font-weight: 500; }
+  .info-text .info-sub { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 2px; }
+  .info-text a { color: white; text-decoration: none; }
+  .whatsapp-btn {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    background: #25D366; color: white; width: 100%;
+    padding: 15px; font-size: 13px; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: background 0.2s; margin-top: 32px;
+  }
+  .whatsapp-btn:hover { background: #1db954; }
+  .social-row { display: flex; gap: 12px; margin-top: 24px; }
+  .social-link {
+    width: 40px; height: 40px;
+    border: 1px solid rgba(255,255,255,0.15);
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,0.6); text-decoration: none;
+    font-size: 14px; transition: all 0.2s;
+  }
+  .social-link:hover { border-color: var(--rust); color: var(--rust); background: rgba(196,98,45,0.08); }
+
+  /* ─── FOOTER ─────────────────────────────────── */
+  footer {
+    background: #0D0D0D; color: rgba(255,255,255,0.5);
+    padding: 60px 6vw 32px;
+  }
+  .footer-top {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px; margin-bottom: 48px;
+    padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .footer-brand { display: flex; flex-direction: column; gap: 16px; }
+  .footer-logo {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .footer-logo-hex {
+    width: 34px; height: 34px; background: var(--rust);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .footer-logo-text { font-weight: 700; font-size: 13px; letter-spacing: 0.1em; color: white; }
+  .footer-brand p { font-size: 13px; line-height: 1.7; max-width: 280px; }
+  .footer-col h5 {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em;
+    color: white; margin-bottom: 20px;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col ul a {
+    font-size: 13px; color: rgba(255,255,255,0.5);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .footer-col ul a:hover { color: var(--rust); }
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 12px; flex-wrap: wrap; gap: 12px;
+  }
+  .footer-bottom a { color: rgba(255,255,255,0.4); text-decoration: none; }
+  .footer-bottom a:hover { color: var(--rust); }
+
+  /* ─── FLOATING WA ───────────────────────────── */
+  .wa-float {
+    position: fixed; bottom: 28px; right: 28px;
+    width: 56px; height: 56px; background: #25D366;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    z-index: 99; text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .wa-float:hover { transform: scale(1.1); box-shadow: 0 8px 30px rgba(37,211,102,0.5); }
+  .wa-float svg { width: 28px; fill: white; }
+  .wa-float-pulse {
+    position: absolute; inset: 0; border-radius: 50%;
+    background: rgba(37,211,102,0.4);
+    animation: waPulse 2s infinite;
+  }
+  @keyframes waPulse {
+    0% { transform: scale(1); opacity: 0.6; }
+    100% { transform: scale(1.8); opacity: 0; }
+  }
+
+  /* ─── RESPONSIVE ─────────────────────────────── */
+  @media (max-width: 1024px) {
+    .footer-top { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+    .mobile-menu {
+      display: block; position: fixed;
+      top: 70px; left: 0; right: 0;
+      background: white; border-top: 1px solid var(--border);
+      padding: 24px; z-index: 99; transform: translateY(-110%);
+      transition: transform 0.3s; box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+    .mobile-menu.open { transform: translateY(0); }
+    .mobile-menu ul { list-style: none; display: flex; flex-direction: column; gap: 0; }
+    .mobile-menu ul li a {
+      display: block; padding: 14px 0; font-size: 14px;
+      color: var(--charcoal); text-decoration: none; font-weight: 500;
+      border-bottom: 1px solid var(--border); letter-spacing: 0.05em;
+    }
+    #inicio { grid-template-columns: 1fr; }
+    .hero-right { min-height: 50vh; }
+    .hero-left { padding: 60px 5vw; }
+    .hero-stats { gap: 24px; }
+    .soluciones-header { grid-template-columns: 1fr; }
+    .tab-content.active { grid-template-columns: 1fr; }
+    .grid-portafolio { grid-template-columns: 1fr 1fr; }
+    .portfolio-item.featured { grid-column: span 2; grid-row: span 1; }
+    .portfolio-item.featured img { height: 280px; }
+    .proceso-steps { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .proceso-steps::before { display: none; }
+    .cotizador-wrap { grid-template-columns: 1fr; }
+    #nosotros { grid-template-columns: 1fr; }
+    .nosotros-img { min-height: 50vh; }
+    .contacto-grid { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+    .cubiertas-strip { grid-template-columns: 1fr; }
+    .valores-grid { grid-template-columns: 1fr; }
+    .option-grid { grid-template-columns: 1fr 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 480px) {
+    .grid-portafolio { grid-template-columns: 1fr; }
+    .portfolio-item.featured { grid-column: span 1; }
+    .footer-top { grid-template-columns: 1fr; }
+    .option-grid { grid-template-columns: 1fr; }
+    .proceso-steps { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="#inicio" class="nav-logo">
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    </div>
+    <div class="nav-brand">
+      <span class="nav-brand-main">ENLINEA</span>
+      <span class="nav-brand-sub">Madera y Metal</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#inicio">Inicio</a></li>
+    <li><a href="#soluciones">Soluciones</a></li>
+    <li><a href="#portafolio">Portafolio</a></li>
+    <li><a href="#cotizador">Cotizador</a></li>
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#contacto" class="nav-cta">Cotizar ahora</a></li>
+  </ul>
+  <div class="nav-hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="#inicio" onclick="toggleMenu()">Inicio</a></li>
+    <li><a href="#soluciones" onclick="toggleMenu()">Soluciones</a></li>
+    <li><a href="#portafolio" onclick="toggleMenu()">Portafolio</a></li>
+    <li><a href="#cotizador" onclick="toggleMenu()">Cotizador</a></li>
+    <li><a href="#nosotros" onclick="toggleMenu()">Nosotros</a></li>
+    <li><a href="#contacto" onclick="toggleMenu()">Contacto</a></li>
+  </ul>
+</div>
+
+<!-- HERO -->
+<section id="inicio">
+  <div class="hero-left">
+    <div class="hero-tag">Diseño y fabricación a medida</div>
+    <h1 class="hero-title">
+      Diseñamos y<br>
+      construimos<br>
+      <em>pérgolas que</em><br>
+      transforman<br>
+      tus espacios
+    </h1>
+    <p class="hero-desc">
+      Soluciones a medida en madera, metal y mixtas. Cubiertas de vidrio y policarbonato de alta resistencia para exteriores únicos y atemporales.
+    </p>
+    <div class="hero-actions">
+      <a href="#soluciones" class="btn-primary">
+        Ver soluciones
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a href="#cotizador" class="btn-secondary">Cotizar ahora</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-num">10+</span>
+        <span class="stat-label">Años de experiencia</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">300+</span>
+        <span class="stat-label">Proyectos ejecutados</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">100%</span>
+        <span class="stat-label">Diseño personalizado</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <!-- Pergola mixta madera metal -->
+    <img class="hero-img-main"
+      src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=85"
+      alt="Pérgola ENLINEA Madera y Metal">
+    <div class="hero-badge">
+      <span class="hero-badge-num">★★★★★</span>
+      <span class="hero-badge-txt">Top rated</span>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS DESTACADOS (strip) -->
+<div style="background:var(--sand-light); padding: 32px 6vw; display:flex; gap:0; overflow-x:auto;">
+  <div style="flex:1; min-width:200px; padding:0 32px; border-right:1px solid var(--border); display:flex;align-items:center;gap:14px;">
+    <span style="font-size:22px">🪵</span>
+    <div>
+      <div style="font-size:12px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase">Pérgolas de Madera</div>
+      <div style="font-size:11px;color:var(--text-muted);">Cálidas y duraderas</div>
+    </div>
+  </div>
+  <div style="flex:1; min-width:200px; padding:0 32px; border-right:1px solid var(--border); display:flex;align-items:center;gap:14px;">
+    <span style="font-size:22px">⚙️</span>
+    <div>
+      <div style="font-size:12px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase">Pérgolas de Metal</div>
+      <div style="font-size:11px;color:var(--text-muted);">Modernas y resistentes</div>
+    </div>
+  </div>
+  <div style="flex:1; min-width:200px; padding:0 32px; border-right:1px solid var(--border); display:flex;align-items:center;gap:14px;">
+    <span style="font-size:22px">🏗️</span>
+    <div>
+      <div style="font-size:12px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase">Mixtas</div>
+      <div style="font-size:11px;color:var(--text-muted);">Lo mejor de ambos mundos</div>
+    </div>
+  </div>
+  <div style="flex:1; min-width:200px; padding:0 32px; display:flex;align-items:center;gap:14px;">
+    <span style="font-size:22px">🔲</span>
+    <div>
+      <div style="font-size:12px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase">Muebles a medida</div>
+      <div style="font-size:11px;color:var(--text-muted);">Diseño arquitectónico</div>
+    </div>
+  </div>
+</div>
+
+<!-- SOLUCIONES -->
+<section id="soluciones">
+  <div class="soluciones-header">
+    <div>
+      <div class="section-tag">Nuestras soluciones</div>
+      <h2 class="section-title">Soluciones para <em>cada estilo</em></h2>
+    </div>
+    <p class="section-desc">Ofrecemos pérgolas en diferentes materiales y cubiertas para adaptarnos a tu espacio, necesidades y presupuesto.</p>
+  </div>
+
+  <div class="tab-row">
+    <button class="tab-btn active" onclick="showTab('madera', this)">Madera</button>
+    <button class="tab-btn" onclick="showTab('metal', this)">Metal</button>
+    <button class="tab-btn" onclick="showTab('mixta', this)">Mixta</button>
+  </div>
+
+  <div id="tab-madera" class="tab-content active">
+    <div class="sol-text">
+      <h3>Pérgolas de Madera</h3>
+      <p>La calidad y belleza de la madera natural realzan tus espacios exteriores con acabados únicos y atemporales. Maderas seleccionadas y tratadas para máxima durabilidad.</p>
+      <ul class="sol-features">
+        <li>Maderas seleccionadas y tratadas para exteriores</li>
+        <li>Resistentes a la intemperie y humedad</li>
+        <li>Acabados personalizados: natural, tono café, negro</li>
+        <li>Diseño a medida para cualquier espacio</li>
+        <li>Garantía extendida en materiales y fabricación</li>
+      </ul>
+      <a href="#cotizador" class="btn-primary" style="display:inline-flex; margin-top:28px;">Ver proyectos de madera</a>
+    </div>
+    <div class="sol-img">
+      <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=700&q=80" alt="Pérgola de madera">
+      <div class="sol-img-badge">
+        <span>Material</span>
+        <strong>Madera tratada</strong>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab-metal" class="tab-content">
+    <div class="sol-text">
+      <h3>Pérgolas de Metal</h3>
+      <p>Líneas contemporáneas y estructura robusta. El metal ofrece máxima durabilidad con un diseño limpio y moderno que se adapta a cualquier arquitectura.</p>
+      <ul class="sol-features">
+        <li>Acero galvanizado de alta resistencia</li>
+        <li>Tratamiento anticorrosivo de larga duración</li>
+        <li>Colores: negro mate, blanco, grafito</li>
+        <li>Estructura esbelta y elegante</li>
+        <li>Ideal para espacios modernos y minimalistas</li>
+      </ul>
+      <a href="#cotizador" class="btn-primary" style="display:inline-flex; margin-top:28px;">Ver proyectos de metal</a>
+    </div>
+    <div class="sol-img">
+      <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=700&q=80" alt="Pérgola de metal">
+      <div class="sol-img-badge">
+        <span>Material</span>
+        <strong>Acero galvanizado</strong>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab-mixta" class="tab-content">
+    <div class="sol-text">
+      <h3>Pérgolas Mixtas</h3>
+      <p>Lo mejor de ambos mundos. Combinamos la calidez de la madera con la solidez del metal para crear estructuras únicas con carácter propio.</p>
+      <ul class="sol-features">
+        <li>Estructura metálica con detalles en madera</li>
+        <li>Mayor versatilidad de diseño y acabados</li>
+        <li>Contraste visual de materiales nobles</li>
+        <li>Combinaciones personalizadas por proyecto</li>
+        <li>Solución premium para espacios exigentes</li>
+      </ul>
+      <a href="#cotizador" class="btn-primary" style="display:inline-flex; margin-top:28px;">Ver proyectos mixtos</a>
+    </div>
+    <div class="sol-img">
+      <img src="https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=700&q=80" alt="Pérgola mixta">
+      <div class="sol-img-badge">
+        <span>Material</span>
+        <strong>Madera + Metal</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CUBIERTAS -->
+<div class="cubiertas-strip">
+  <div>
+    <div class="section-tag">Cubiertas</div>
+    <h2 class="section-title" style="color:white;">Cubierta ideal para <em style="color:var(--rust-light)">cada clima</em></h2>
+    <p style="color:rgba(255,255,255,0.55); font-size:14px; margin-top:16px; line-height:1.7;">Protege tu espacio con cubiertas técnicas de alto rendimiento, diseñadas para durar.</p>
+  </div>
+  <div class="cubiertas-cards">
+    <div class="cubierta-card">
+      <div class="cubierta-icon">🔲</div>
+      <h4>Cubierta de Vidrio</h4>
+      <p>Elegancia, transparencia y máxima entrada de luz natural. Vidrio templado de seguridad con tratamiento UV.</p>
+    </div>
+    <div class="cubierta-card">
+      <div class="cubierta-icon">🌧️</div>
+      <h4>Cubierta de Policarbonato</h4>
+      <p>Ligera, resistente a impactos y con protección UV ideal para todo clima. Excelente relación calidad-precio.</p>
+    </div>
+    <div class="cubierta-card">
+      <div class="cubierta-icon">🪵</div>
+      <h4>Cubierta en Madera</h4>
+      <p>Calor y estética natural que armoniza con entornos jardín y exteriores premium de alto diseño.</p>
+    </div>
+    <div class="cubierta-card">
+      <div class="cubierta-icon">🏗️</div>
+      <h4>Abierta / Celosía</h4>
+      <p>Filtro natural de luz y sombra. Perfecto para pérgolas decorativas y espacios de estar al aire libre.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PORTAFOLIO -->
+<section id="portafolio">
+  <div class="portafolio-header">
+    <div>
+      <div class="section-tag">Portafolio</div>
+      <h2 class="section-title">Proyectos <em>ejecutados</em></h2>
+    </div>
+    <div class="filter-row">
+      <button class="filter-btn active" onclick="filterPortfolio('all', this)">Todos</button>
+      <button class="filter-btn" onclick="filterPortfolio('madera', this)">Madera</button>
+      <button class="filter-btn" onclick="filterPortfolio('metal', this)">Metal</button>
+      <button class="filter-btn" onclick="filterPortfolio('mixta', this)">Mixta</button>
+      <button class="filter-btn" onclick="filterPortfolio('vidrio', this)">Vidrio</button>
+    </div>
+  </div>
+
+  <div class="grid-portafolio">
+    <div class="portfolio-item featured" data-cat="mixta">
+      <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?w=900&q=80" alt="Pérgola mixta destacada">
+      <div class="portfolio-overlay">
+        <h4>Pérgola Mixta con Cubierta de Vidrio</h4>
+        <span>Quito, Ecuador · 42 m²</span>
+      </div>
+      <span class="portfolio-tag">Destacado</span>
+    </div>
+    <div class="portfolio-item" data-cat="madera">
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=500&q=80" alt="Pérgola de madera">
+      <div class="portfolio-overlay">
+        <h4>Pérgola de Madera</h4>
+        <span>Residencial · Madera natural</span>
+      </div>
+      <span class="portfolio-tag">Madera</span>
+    </div>
+    <div class="portfolio-item" data-cat="metal">
+      <img src="https://images.unsplash.com/photo-1598977054742-c02dbbedc9dc?w=500&q=80" alt="Pérgola de metal">
+      <div class="portfolio-overlay">
+        <h4>Pérgola de Metal</h4>
+        <span>Comercial · Acero negro mate</span>
+      </div>
+      <span class="portfolio-tag">Metal</span>
+    </div>
+    <div class="portfolio-item" data-cat="vidrio">
+      <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=500&q=80" alt="Cubierta vidrio">
+      <div class="portfolio-overlay">
+        <h4>Cubierta de Vidrio Templado</h4>
+        <span>Residencial · Vidrio 8mm</span>
+      </div>
+      <span class="portfolio-tag">Vidrio</span>
+    </div>
+    <div class="portfolio-item" data-cat="mixta">
+      <img src="https://images.unsplash.com/photo-1600210491892-03d54f0ede17?w=500&q=80" alt="Mobiliario madera metal">
+      <div class="portfolio-overlay">
+        <h4>Muebles Madera y Metal</h4>
+        <span>Diseño interior · A medida</span>
+      </div>
+      <span class="portfolio-tag">Mixta</span>
+    </div>
+    <div class="portfolio-item" data-cat="madera">
+      <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=500&q=80" alt="Escritorio suspendido">
+      <div class="portfolio-overlay">
+        <h4>Diseño Arquitectónico Interior</h4>
+        <span>Residencial · Madera + Metal</span>
+      </div>
+      <span class="portfolio-tag">Madera</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section class="proceso-section">
+  <div class="proceso-header">
+    <div class="section-tag">Nuestro proceso</div>
+    <h2 class="section-title">Así <em>trabajamos</em></h2>
+    <p style="font-size:14px; color:var(--text-muted); max-width:500px; margin:12px auto 0; line-height:1.7;">Un proceso claro y transparente, de la idea al espacio terminado.</p>
+  </div>
+  <div class="proceso-steps">
+    <div class="proceso-step">
+      <div class="proceso-num">1</div>
+      <h4>Asesoría inicial</h4>
+      <p>Escuchamos tus necesidades y analizamos el espacio sin costo.</p>
+    </div>
+    <div class="proceso-step">
+      <div class="proceso-num">2</div>
+      <h4>Diseño 3D</h4>
+      <p>Visualiza tu proyecto antes de construirlo con renders de alta calidad.</p>
+    </div>
+    <div class="proceso-step">
+      <div class="proceso-num">3</div>
+      <h4>Fabricación propia</h4>
+      <p>Control de calidad en cada detalle en nuestro taller especializado.</p>
+    </div>
+    <div class="proceso-step">
+      <div class="proceso-num">4</div>
+      <h4>Instalación</h4>
+      <p>Equipo profesional con años de experiencia en instalaciones.</p>
+    </div>
+    <div class="proceso-step">
+      <div class="proceso-num">5</div>
+      <h4>Entrega y garantía</h4>
+      <p>Respaldo en materiales y mano de obra. Tu satisfacción primero.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COTIZADOR -->
+<section id="cotizador">
+  <div style="margin-bottom:60px;">
+    <div class="section-tag">Cotizador</div>
+    <h2 class="section-title">Cotiza tu pérgola <em>en 4 pasos</em></h2>
+    <p class="section-desc">Obtén una estimación inmediata. Un asesor confirmará los detalles finales.</p>
+  </div>
+
+  <div class="cotizador-wrap">
+    <div class="cotizador-left">
+      <div class="cotizador-steps-nav">
+        <div class="cstep active" onclick="showCotizStep(1)">
+          <div class="cstep-num">1</div>
+          <div class="cstep-label">Tipo</div>
+        </div>
+        <div class="cstep" onclick="showCotizStep(2)">
+          <div class="cstep-num">2</div>
+          <div class="cstep-label">Cubierta</div>
+        </div>
+        <div class="cstep" onclick="showCotizStep(3)">
+          <div class="cstep-num">3</div>
+          <div class="cstep-label">Color</div>
+        </div>
+        <div class="cstep" onclick="showCotizStep(4)">
+          <div class="cstep-num">4</div>
+          <div class="cstep-label">Medidas</div>
+        </div>
+      </div>
+
+      <!-- Paso 1 -->
+      <div id="cotiz-1" class="cotiz-panel active">
+        <h3>¿Qué tipo de pérgola deseas?</h3>
+        <p>Selecciona el material principal de tu estructura</p>
+        <div class="option-grid">
+          <div class="option-card selected" onclick="selectOption(this, 'tipo', 'Madera')" data-val="Madera">
+            <span class="oc-icon">🪵</span>
+            <h4>Madera</h4>
+            <p>Cálida y natural</p>
+          </div>
+          <div class="option-card" onclick="selectOption(this, 'tipo', 'Metal')" data-val="Metal">
+            <span class="oc-icon">⚙️</span>
+            <h4>Metal</h4>
+            <p>Moderna y robusta</p>
+          </div>
+          <div class="option-card" onclick="selectOption(this, 'tipo', 'Mixta')" data-val="Mixta">
+            <span class="oc-icon">🏗️</span>
+            <h4>Mixta</h4>
+            <p>Madera + Metal</p>
+          </div>
+        </div>
+        <div class="cotiz-nav">
+          <button class="btn-next" onclick="showCotizStep(2)">Siguiente →</button>
+        </div>
+      </div>
+
+      <!-- Paso 2 -->
+      <div id="cotiz-2" class="cotiz-panel">
+        <h3>Tipo de cubierta</h3>
+        <p>¿Cómo quieres proteger tu espacio?</p>
+        <div class="option-grid">
+          <div class="option-card selected" onclick="selectOption(this, 'cubierta', 'Vidrio templado')" data-val="Vidrio templado">
+            <span class="oc-icon">🔲</span>
+            <h4>Vidrio templado</h4>
+            <p>Máxima luminosidad</p>
+          </div>
+          <div class="option-card" onclick="selectOption(this, 'cubierta', 'Policarbonato')" data-val="Policarbonato">
+            <span class="oc-icon">🌧️</span>
+            <h4>Policarbonato</h4>
+            <p>Ligero y resistente</p>
+          </div>
+          <div class="option-card" onclick="selectOption(this, 'cubierta', 'Madera / Celosía')" data-val="Madera / Celosía">
+            <span class="oc-icon">☀️</span>
+            <h4>Celosía</h4>
+            <p>Sombra natural</p>
+          </div>
+        </div>
+        <div class="cotiz-nav">
+          <button class="btn-prev" onclick="showCotizStep(1)">← Atrás</button>
+          <button class="btn-next" onclick="showCotizStep(3)">Siguiente →</button>
+        </div>
+      </div>
+
+      <!-- Paso 3 -->
+      <div id="cotiz-3" class="cotiz-panel">
+        <h3>Color y acabados</h3>
+        <p>Elige la paleta que mejor complementa tu espacio</p>
+        <div style="margin-bottom:48px;">
+          <div class="color-options">
+            <div class="color-opt selected" style="background:#1C1C1C;" onclick="selectColor(this,'Negro mate')" title="Negro mate"><span>Negro mate</span></div>
+            <div class="color-opt" style="background:#A0714F;" onclick="selectColor(this,'Madera natural')" title="Madera natural"><span>Madera</span></div>
+            <div class="color-opt" style="background:#FAF7F2;border:1px solid #ddd;" onclick="selectColor(this,'Blanco')" title="Blanco"><span>Blanco</span></div>
+            <div class="color-opt" style="background:#6B5A4E;" onclick="selectColor(this,'Café oscuro')" title="Café oscuro"><span>Café</span></div>
+            <div class="color-opt" style="background:#4A5C47;" onclick="selectColor(this,'Verde oliva')" title="Verde oliva"><span>Verde oliva</span></div>
+          </div>
+        </div>
+        <div class="cotiz-nav" style="margin-top:52px;">
+          <button class="btn-prev" onclick="showCotizStep(2)">← Atrás</button>
+          <button class="btn-next" onclick="showCotizStep(4)">Siguiente →</button>
+        </div>
+      </div>
+
+      <!-- Paso 4 -->
+      <div id="cotiz-4" class="cotiz-panel">
+        <h3>Medidas aproximadas</h3>
+        <p>Las medidas finales se confirmarán en visita técnica</p>
+        <div class="dim-row">
+          <div class="dim-field">
+            <label>Ancho (m)</label>
+            <input type="number" id="dim-w" value="5.00" step="0.1" min="1" max="20" oninput="calcPrice()">
+          </div>
+          <div class="dim-field">
+            <label>Fondo (m)</label>
+            <input type="number" id="dim-d" value="3.00" step="0.1" min="1" max="20" oninput="calcPrice()">
+          </div>
+          <div class="dim-field">
+            <label>Altura (m)</label>
+            <input type="number" id="dim-h" value="2.60" step="0.1" min="1.5" max="6" oninput="calcPrice()">
+          </div>
+        </div>
+        <div style="background:var(--sand-light); padding:16px 20px; margin-top:8px;">
+          <div style="font-size:12px; color:var(--text-muted);">Área estimada: <strong id="area-val">15.00 m²</strong></div>
+        </div>
+        <div class="cotiz-nav">
+          <button class="btn-prev" onclick="showCotizStep(3)">← Atrás</button>
+          <a href="https://wa.me/593982372008?text=Hola,%20quiero%20cotizar%20una%20pérgola" target="_blank" class="btn-next" style="text-decoration:none;">Solicitar cotización →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Resumen -->
+    <div class="resumen-card">
+      <h3>Resumen de tu pérgola</h3>
+      <div class="resumen-row">
+        <span>Tipo de pérgola</span>
+        <span id="res-tipo">Madera</span>
+      </div>
+      <div class="resumen-row">
+        <span>Cubierta</span>
+        <span id="res-cubierta">Vidrio templado</span>
+      </div>
+      <div class="resumen-row">
+        <span>Color</span>
+        <span id="res-color">Negro mate</span>
+      </div>
+      <div class="resumen-row">
+        <span>Medidas</span>
+        <span id="res-medidas">5.00 × 3.00 × 2.60 m</span>
+      </div>
+      <div class="resumen-price">
+        <div class="label">Valor estimado*</div>
+        <div class="price" id="res-price">$ 18.900.000</div>
+        <div class="note">*Valor referencial. Puede variar según diseño final, materiales y mano de obra.</div>
+      </div>
+      <a href="https://wa.me/593982372008?text=Hola,%20quiero%20cotizar%20una%20pérgola%20con%20ENLINEA" target="_blank" class="btn-cotizar">Solicitar cotización</a>
+      <button class="btn-guardar">Guardar estimado</button>
+    </div>
+  </div>
+</section>
+
+<!-- NOSOTROS -->
+<section id="nosotros">
+  <div class="nosotros-img">
+    <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=900&q=80" alt="Equipo ENLINEA en obra">
+  </div>
+  <div class="nosotros-content">
+    <div class="section-tag">Nosotros</div>
+    <h2 class="section-title">Quiénes <em>somos</em></h2>
+    <p>ENLINEA MADERA Y METAL es una empresa especializada en el diseño, fabricación e instalación de pérgolas y mobiliario exterior e interior a medida.</p>
+    <p>Con más de 10 años de experiencia, combinamos craftsmanship artesanal con procesos industriales modernos para entregar proyectos de alta calidad.</p>
+    <div class="valores-grid">
+      <div class="valor-item">
+        <h4>Misión</h4>
+        <p>Transformar espacios con diseño y materiales nobles.</p>
+      </div>
+      <div class="valor-item">
+        <h4>Visión</h4>
+        <p>Ser referente latinoamericano en pérgolas de diseño.</p>
+      </div>
+      <div class="valor-item">
+        <h4>Experiencia</h4>
+        <p>+300 proyectos ejecutados en todo el país.</p>
+      </div>
+      <div class="valor-item">
+        <h4>Garantías</h4>
+        <p>Respaldo en materiales y fabricación por escrito.</p>
+      </div>
+    </div>
+    <div class="garantias-row">
+      <div class="garantia">
+        <span class="garantia-icon">🛡️</span>
+        <div class="garantia-text">
+          <strong>Materiales</strong>
+          Garantía en insumos
+        </div>
+      </div>
+      <div class="garantia">
+        <span class="garantia-icon">🔧</span>
+        <div class="garantia-text">
+          <strong>Fabricación propia</strong>
+          Taller especializado
+        </div>
+      </div>
+      <div class="garantia">
+        <span class="garantia-icon">📐</span>
+        <div class="garantia-text">
+          <strong>Diseño 3D</strong>
+          Previo a la obra
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<div class="testimonial-section">
+  <div class="section-tag" style="justify-content:center;"><span>Testimonios</span></div>
+  <blockquote class="testimonial-quote">
+    "Excelente atención, materiales de calidad y un acabado impecable. Superó nuestras expectativas en tiempo y resultado final."
+  </blockquote>
+  <div class="testimonial-author">
+    <strong>Carolina R.</strong> Bogotá, Colombia
+  </div>
+</div>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div style="text-align:center; margin-bottom:72px;">
+    <div class="section-tag" style="justify-content:center;">Contacto</div>
+    <h2 class="section-title">Hablemos de tu <em>proyecto</em></h2>
+    <p style="font-size:14px; color:var(--text-muted); max-width:420px; margin: 12px auto 0; line-height:1.7;">Cuéntanos tus ideas y te ayudaremos a crear la pérgola perfecta para tu espacio.</p>
+  </div>
+
+  <div class="contacto-grid">
+    <div class="contact-form-wrap">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Nombre completo</label>
+          <input type="text" placeholder="Tu nombre">
+        </div>
+        <div class="form-group">
+          <label>Teléfono / WhatsApp</label>
+          <input type="tel" placeholder="+593 xxx xxx xxx">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Correo electrónico</label>
+        <input type="email" placeholder="tu@correo.com">
+      </div>
+      <div class="form-group">
+        <label>Ciudad</label>
+        <input type="text" placeholder="Ciudad">
+      </div>
+      <div class="form-group">
+        <label>Cuéntanos tu proyecto</label>
+        <textarea rows="5" placeholder="Describe brevemente el espacio, dimensiones aproximadas y lo que tienes en mente..."></textarea>
+      </div>
+      <div class="form-check">
+        <input type="checkbox" id="policy" checked>
+        <label for="policy">Acepto la política de tratamiento de datos y el envío de comunicaciones comerciales.</label>
+      </div>
+      <button class="btn-primary" style="width:100%; justify-content:center; padding:16px;">
+        Enviar mensaje
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+    </div>
+
+    <div class="contact-info-card">
+      <h3>Información de contacto</h3>
+      <p>Estamos para asesorarte en cada detalle de tu proyecto.</p>
+
+      <div class="info-item">
+        <span class="info-icon">📱</span>
+        <div class="info-text">
+          <div class="info-label">Atención al cliente</div>
+          <div class="info-val"><a href="tel:+593982372008">+593 982 372 008</a></div>
+          <div class="info-sub">Llamadas y WhatsApp</div>
+        </div>
+      </div>
+      <div class="info-item">
+        <span class="info-icon">📸</span>
+        <div class="info-text">
+          <div class="info-label">Instagram</div>
+          <div class="info-val"><a href="https://www.instagram.com/enlinea_uio" target="_blank">@enlinea_uio</a></div>
+          <div class="info-sub">Ver nuestros proyectos</div>
+        </div>
+      </div>
+      <div class="info-item">
+        <span class="info-icon">🕐</span>
+        <div class="info-text">
+          <div class="info-label">Horario de atención</div>
+          <div class="info-val">Lun – Vie · 8:00 – 18:00</div>
+          <div class="info-sub">Sábados · 9:00 – 13:00</div>
+        </div>
+      </div>
+
+      <a href="https://wa.me/593982372008?text=Hola,%20quiero%20cotizar%20una%20pérgola" target="_blank" class="whatsapp-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Chatear por WhatsApp
+      </a>
+
+      <div class="social-row">
+        <a href="https://www.instagram.com/enlinea_uio" target="_blank" class="social-link" title="Instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="https://wa.me/593982372008" target="_blank" class="social-link" title="WhatsApp">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <div class="footer-logo-hex"></div>
+        <div>
+          <div class="footer-logo-text">ENLINEA</div>
+          <div style="font-size:10px; letter-spacing:0.15em; color:rgba(255,255,255,0.4); text-transform:uppercase;">Madera y Metal</div>
+        </div>
+      </div>
+      <p>Pérgolas en madera, metal y mixtas. Cubiertas de vidrio y policarbonato. Diseño arquitectónico y mantenimiento.</p>
+      <div style="display:flex; gap:10px; margin-top:8px;">
+        <a href="https://www.instagram.com/enlinea_uio" target="_blank" class="social-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Soluciones</h5>
+      <ul>
+        <li><a href="#soluciones">Pérgolas de Madera</a></li>
+        <li><a href="#soluciones">Pérgolas de Metal</a></li>
+        <li><a href="#soluciones">Pérgolas Mixtas</a></li>
+        <li><a href="#soluciones">Cubierta de Vidrio</a></li>
+        <li><a href="#soluciones">Policarbonato</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Empresa</h5>
+      <ul>
+        <li><a href="#nosotros">Quiénes somos</a></li>
+        <li><a href="#nosotros">Misión y visión</a></li>
+        <li><a href="#nosotros">Experiencia</a></li>
+        <li><a href="#nosotros">Garantías</a></li>
+        <li><a href="#portafolio">Portafolio</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contacto</h5>
+      <ul>
+        <li><a href="https://wa.me/593982372008" target="_blank">+593 982 372 008</a></li>
+        <li><a href="https://www.instagram.com/enlinea_uio" target="_blank">@enlinea_uio</a></li>
+        <li><a href="#cotizador">Cotizador online</a></li>
+        <li><a href="#contacto">Formulario</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 ENLINEA MADERA Y METAL. Todos los derechos reservados.</span>
+    <div style="display:flex; gap:24px;">
+      <a href="#">Política de privacidad</a>
+      <a href="#">Términos y condiciones</a>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/593982372008?text=Hola,%20me%20interesa%20cotizar%20una%20pérgola" target="_blank" class="wa-float" title="Chatea con nosotros">
+  <div class="wa-float-pulse"></div>
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+// ─── MOBILE MENU ─────────────────────────────────────────────
+function toggleMenu() {
+  const menu = document.getElementById('mobileMenu');
+  menu.classList.toggle('open');
+}
+
+// ─── TABS SOLUCIONES ─────────────────────────────────────────
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ─── PORTFOLIO FILTER ─────────────────────────────────────────
+function filterPortfolio(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.portfolio-item').forEach(item => {
+    if (cat === 'all' || item.dataset.cat === cat) {
+      item.style.display = '';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+}
+
+// ─── COTIZADOR ───────────────────────────────────────────────
+const cotizState = { tipo: 'Madera', cubierta: 'Vidrio templado', color: 'Negro mate' };
+const priceBases = { Madera: 1200, Metal: 1400, Mixta: 1600 };
+const cubMult = { 'Vidrio templado': 1.4, 'Policarbonato': 1.15, 'Madera / Celosía': 1.0 };
+
+function showCotizStep(n) {
+  document.querySelectorAll('.cotiz-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.cstep').forEach(s => s.classList.remove('active'));
+  document.getElementById('cotiz-' + n).classList.add('active');
+  document.querySelectorAll('.cstep')[n - 1].classList.add('active');
+  calcPrice();
+}
+
+function selectOption(el, field, val) {
+  el.closest('.option-grid').querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  cotizState[field] = val;
+  document.getElementById('res-' + field).textContent = val;
+  calcPrice();
+}
+
+function selectColor(el, name) {
+  document.querySelectorAll('.color-opt').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  cotizState.color = name;
+  document.getElementById('res-color').textContent = name;
+}
+
+function calcPrice() {
+  const w = parseFloat(document.getElementById('dim-w')?.value || 5);
+  const d = parseFloat(document.getElementById('dim-d')?.value || 3);
+  const h = parseFloat(document.getElementById('dim-h')?.value || 2.6);
+  const area = w * d;
+  const el = document.getElementById('area-val');
+  if (el) el.textContent = area.toFixed(2) + ' m²';
+  document.getElementById('res-medidas').textContent = w.toFixed(2) + ' × ' + d.toFixed(2) + ' × ' + h.toFixed(2) + ' m';
+  const base = priceBases[cotizState.tipo] || 1200;
+  const mult = cubMult[cotizState.cubierta] || 1;
+  const est = Math.round(base * area * mult / 1000) * 1000;
+  document.getElementById('res-price').textContent = '$ ' + est.toLocaleString('es-CO');
+}
+
+// ─── SCROLL NAV SHADOW ───────────────────────────────────────
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('main-nav');
+  nav.style.boxShadow = window.scrollY > 20 ? '0 4px 30px rgba(0,0,0,0.07)' : 'none';
+});
+
+// ─── SCROLL REVEAL ───────────────────────────────────────────
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.portfolio-item, .proceso-step, .cubierta-card, .valor-item').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(24px)';
+  el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  observer.observe(el);
+});
+
+// Init
+calcPrice();
+</script>
+</body>
+</html>
